@@ -3,6 +3,21 @@
 Sammlung von Übungen und Lernquellen zum Lernen der Programmiersprache Go.
 
 
+
+
+
+## Anleitung für die Programmierbeispiele 
+
+- 
+
+
+
+
+
+
+
+
+
 ## Lernquellen
 
 ### 1) Go programmieren lernen in 14 Minuten - Go Crash Course
