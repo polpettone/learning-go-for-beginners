@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/inpututil"
 )
@@ -12,8 +10,6 @@ type Game struct {
 }
 
 func (g *Game) Update(screen *ebiten.Image) error {
-
-	log.Printf("%v", g.Pet)
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyW) {
 		g.Pet.Y = g.Pet.Y - 10
