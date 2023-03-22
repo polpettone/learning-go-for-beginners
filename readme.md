@@ -4,9 +4,6 @@ Sammlung von Übungen und Lernquellen zum Lernen der Programmiersprache Go.
 
 
 
-
-
-
 ## Anleitung
 - öffne ein Terminal und wechsel in das Verzeichnis workspace
 
@@ -29,8 +26,32 @@ ls
 - im Verzeichnis code-beispiele befinden sich verschiedene Programmierbeispiele
 
 ### Arbeiten mit vscode
+
+#### Folder öffnen
 - öffne vscode
-- öffne das 
+- öffne das verzeichnis code-beispiele
+```
+File -> Open Folder
+
+workspace/learning-go-for-beginners/code-beispiele 
+```
+
+#### Beispiele ausführen
+- In Menu Leiste Terminal auswählen
+- ins terminal gehen und in das entsprechende Verzeichnis wechseln
+  z.B. 
+    ``` 
+    cd hello-world
+    ``` 
+- dann mit 
+    ``` 
+    go run .
+    ``` 
+- das Programm starten
+- im Beispiel hier sollte 'Hello World' im Terminal erscheinen
+- im Programm hello-world-game sollte ein neues Fenster erscheinen, 
+mit dem der Text "Hello World" geschrieben steht
+-> probiere es aus!
 
 
 
