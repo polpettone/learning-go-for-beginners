@@ -6,9 +6,31 @@ Sammlung von Übungen und Lernquellen zum Lernen der Programmiersprache Go.
 
 
 
-## Anleitung für die Programmierbeispiele 
 
-- 
+## Anleitung
+- öffne ein Terminal und wechsel in das Verzeichnis workspace
+
+```
+cd workspace
+```
+
+- clone diese Repository mit folgendem Befehl:
+
+```
+git clone https://github.com/polpettone/learning-go-for-beginners.git 
+```
+
+- wechsel in das Verzeichnis und schaue dir den Inhalt an
+```
+cd learning-go-for-beginners
+ls 
+```
+
+- im Verzeichnis code-beispiele befinden sich verschiedene Programmierbeispiele
+
+### Arbeiten mit vscode
+- öffne vscode
+- öffne das 
 
 
 
