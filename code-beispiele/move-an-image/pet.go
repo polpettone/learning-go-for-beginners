@@ -39,6 +39,7 @@ func (p *Pet) Draw(screen *ebiten.Image, gameClock int) {
 
 	op := &ebiten.DrawImageOptions{}
 
+	op.GeoM.Scale(0.3, 0.3)
 	op.GeoM.Translate(float64(p.X), float64(p.Y))
 
 	screen.DrawImage(p.CurrentImage, op)

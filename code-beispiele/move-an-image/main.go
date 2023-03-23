@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	screenWidth  = 500
-	screenHeight = 500
+	screenWidth  = 200
+	screenHeight = 200
 )
 
 func main() {
