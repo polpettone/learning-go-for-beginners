@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -18,7 +17,6 @@ func main() {
 
 	petImagesPath := "assets/pet-1"
 	scale := 0.3
-	fmt.Println(os.Args)
 	if len(os.Args) > 1 {
 		petImagesPath = os.Args[1]
 	}
