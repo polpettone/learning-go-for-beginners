@@ -17,6 +17,7 @@ func main() {
 
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Move an image")
+	ebiten.SetRunnableOnUnfocused(true)
 	ebiten.SetWindowPosition(1000, 1000)
 
 	game := &Game{
