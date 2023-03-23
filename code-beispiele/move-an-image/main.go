@@ -19,6 +19,8 @@ func main() {
 	ebiten.SetWindowTitle("Move an image")
 	ebiten.SetRunnableOnUnfocused(true)
 	ebiten.SetWindowPosition(1000, 1000)
+	ebiten.SetWindowDecorated(false)
+	ebiten.SetWindowFloating(true)
 
 	game := &Game{
 		Pet:   NewPet(50, 50, images),
