@@ -19,6 +19,7 @@ func main() {
 	game := &Game{
 		Pet: NewPet(100, 100, "gopher.png"),
 	}
+	ebiten.SetScreenTransparent(true)
 	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}
