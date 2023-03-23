@@ -7,19 +7,20 @@ import (
 )
 
 const (
-	screenWidth  = 200
-	screenHeight = 200
+	screenWidth  = 500
+	screenHeight = 500
 )
 
-const IMAGE_FILE_PATH = "deskpet2.gif"
-
 func main() {
+
+	images := []string{"pet1-1.png", "pet1-2.png", "pet1-3.png"}
+
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Move an image")
 	ebiten.SetWindowPosition(1000, 1000)
 
 	game := &Game{
-		Pet:   NewPet(50, 50, IMAGE_FILE_PATH),
+		Pet:   NewPet(50, 50, images),
 		X:     500,
 		Y:     500,
 		Clock: 0,

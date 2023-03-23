@@ -8,31 +8,48 @@ import (
 )
 
 type Pet struct {
-	X     int
-	Y     int
-	Image *ebiten.Image
+	X                int
+	Y                int
+	Images           []*ebiten.Image
+	CurrentImage     *ebiten.Image
+	AnimationCounter int
 }
 
-func NewPet(x, y int, imagePath string) *Pet {
+func NewPet(x, y int, imagePath []string) *Pet {
 
-	img, err := loadImage(imagePath)
-	if err != nil {
-		log.Fatal(err)
+	images := []*ebiten.Image{}
+	for _, v := range imagePath {
+		img, err := loadImage(v)
+		if err != nil {
+			log.Fatal(err)
+		}
+		images = append(images, img)
 	}
 
 	return &Pet{
-		X:     x,
-		Y:     y,
-		Image: img,
+		X:                x,
+		Y:                y,
+		Images:           images,
+		AnimationCounter: 0,
+		CurrentImage:     images[0],
 	}
 }
 
-func (p *Pet) Draw(screen *ebiten.Image) {
+func (p *Pet) Draw(screen *ebiten.Image, gameClock int) {
 
 	op := &ebiten.DrawImageOptions{}
 
 	op.GeoM.Translate(float64(p.X), float64(p.Y))
-	screen.DrawImage(p.Image, op)
+
+	screen.DrawImage(p.CurrentImage, op)
+
+	if gameClock%20 == 0 {
+		p.CurrentImage = p.Images[p.AnimationCounter]
+		p.AnimationCounter = p.AnimationCounter + 1
+		if p.AnimationCounter >= 3 {
+			p.AnimationCounter = 0
+		}
+	}
 
 }
 

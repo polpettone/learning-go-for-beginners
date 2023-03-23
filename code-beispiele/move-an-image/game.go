@@ -54,7 +54,7 @@ func (g *Game) Update(screen *ebiten.Image) error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	g.Pet.Draw(screen)
+	g.Pet.Draw(screen, g.Clock)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
