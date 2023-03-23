@@ -54,14 +54,6 @@ func (p *Pet) Draw(screen *ebiten.Image, gameClock int) {
 
 }
 
-func loadImage(path string) (*ebiten.Image, error) {
-	img, _, err := ebitenutil.NewImageFromFile(path, ebiten.FilterDefault)
-	if err != nil {
-		return nil, err
-	}
-	return img, nil
-}
-
 func loadImages(path string) ([]*ebiten.Image, error) {
 	images := []*ebiten.Image{}
 

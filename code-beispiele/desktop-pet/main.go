@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
+	"strconv"
 
 	"github.com/hajimehoshi/ebiten"
 )
@@ -13,10 +16,22 @@ const (
 
 func main() {
 
-	cat := NewPet(50, 50, 0.3, "assets/pet-1")
-	hamster := NewPet(50, 50, 0.8, "assets/pet-2")
+	petImagesPath := "assets/pet-1"
+	scale := 0.3
+	fmt.Println(os.Args)
+	if len(os.Args) > 1 {
+		petImagesPath = os.Args[1]
+	}
 
-	pets := []*Pet{cat, hamster}
+	if len(os.Args) > 2 {
+		scaleFromArg, err := strconv.ParseFloat(os.Args[2], 64)
+		if err != nil {
+			log.Fatal(err)
+		}
+		scale = scaleFromArg
+	}
+
+	pet := NewPet(50, 50, scale, petImagesPath)
 
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Desktop Pet")
@@ -26,7 +41,7 @@ func main() {
 	ebiten.SetWindowFloating(true)
 
 	game := &Game{
-		Pet:   pets[0],
+		Pet:   pet,
 		X:     500,
 		Y:     500,
 		Clock: 0,
