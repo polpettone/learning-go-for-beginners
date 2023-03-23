@@ -13,19 +13,8 @@ const (
 
 func main() {
 
-	catImages := []string{
-		"assets/pet-1/pet1-1.png",
-		"assets/pet-1/pet1-2.png",
-		"assets/pet-1/pet1-3.png"}
-
-	hamsterImages := []string{
-		"assets/pet-2/hamster-1.png",
-		"assets/pet-2/hamster-2.png",
-		"assets/pet-2/hamster-3.png",
-		"assets/pet-2/hamster-4.png"}
-
-	cat := NewPet(50, 50, 0.3, catImages)
-	hamster := NewPet(50, 50, 0.8, hamsterImages)
+	cat := NewPet(50, 50, 0.3, "assets/pet-1")
+	hamster := NewPet(50, 50, 0.8, "assets/pet-2")
 
 	pets := []*Pet{cat, hamster}
 

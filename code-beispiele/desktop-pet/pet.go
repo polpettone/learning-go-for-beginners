@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
@@ -16,15 +17,12 @@ type Pet struct {
 	Scale            float64
 }
 
-func NewPet(x, y int, scale float64, imagePath []string) *Pet {
+func NewPet(x, y int, scale float64, path string) *Pet {
 
-	images := []*ebiten.Image{}
-	for _, v := range imagePath {
-		img, err := loadImage(v)
-		if err != nil {
-			log.Fatal(err)
-		}
-		images = append(images, img)
+	images, err := loadImages(path)
+
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	return &Pet{
@@ -62,4 +60,23 @@ func loadImage(path string) (*ebiten.Image, error) {
 		return nil, err
 	}
 	return img, nil
+}
+
+func loadImages(path string) ([]*ebiten.Image, error) {
+	images := []*ebiten.Image{}
+
+	files, err := os.ReadDir(path)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, file := range files {
+		img, _, err := ebitenutil.NewImageFromFile(path+"/"+file.Name(), ebiten.FilterDefault)
+		if err != nil {
+			return nil, err
+		}
+		images = append(images, img)
+	}
+
+	return images, nil
 }
