@@ -11,13 +11,13 @@ const (
 	screenHeight = 640
 )
 
-var pet *Pet
+const IMAGE_FILE_PATH = "gopher.png"
 
 func main() {
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Move an image")
 	game := &Game{
-		Pet: NewPet(100, 100, "gopher.png"),
+		Pet: NewPet(100, 100, IMAGE_FILE_PATH),
 	}
 	ebiten.SetScreenTransparent(true)
 	if err := ebiten.RunGame(game); err != nil {
