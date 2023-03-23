@@ -1,15 +1,37 @@
 package main
 
 import (
+	"math/rand"
+	"time"
+
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/inpututil"
 )
 
 type Game struct {
-	Pet *Pet
+	Pet   *Pet
+	X     int
+	Y     int
+	Clock int
+}
+
+func random(min, max int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(max-min) + min
 }
 
 func (g *Game) Update(screen *ebiten.Image) error {
+
+	g.Clock = g.Clock + 1
+
+	if g.Clock%60 == 0 {
+		x, y := ebiten.WindowPosition()
+		g.X = x
+		g.Y = y
+		g.X = g.X + random(-100, 100)
+		g.Y = g.Y + random(-100, 100)
+		ebiten.SetWindowPosition(g.X, g.Y)
+	}
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyW) {
 		g.Pet.Y = g.Pet.Y - 10
