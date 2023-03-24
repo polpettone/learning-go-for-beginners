@@ -25,6 +25,13 @@ ls
 
 - im Verzeichnis code-beispiele befinden sich verschiedene Programmierbeispiele
 
+### Aktualisieren
+Um den neuesten Stand zu holen führe folgenden Befehl im Verzeichnis learning-go-for-beginners aus.
+```
+git pull
+```
+
+
 ### Arbeiten mit vscode
 
 #### Folder öffnen
