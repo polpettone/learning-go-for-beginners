@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"math/rand"
 	"time"
 
@@ -9,15 +10,47 @@ import (
 )
 
 type Game struct {
-	Pet   *Pet
-	X     int
-	Y     int
-	Clock int
+	Pet      *Pet
+	X        int
+	Y        int
+	Clock    int
+	WalkMode WalkMode
 }
+
+type WalkMode int64
+
+const (
+	Bottom WalkMode = iota
+	Random
+)
 
 func random(min, max int) int {
 	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(max-min) + min
+}
+
+func walkRandom(g *Game) {
+
+	x, y := ebiten.WindowPosition()
+	g.X = x
+	g.Y = y
+	g.X = g.X + random(-100, 100)
+	g.Y = g.Y + random(-100, 100)
+	log.Printf("%d, %d", g.X, g.Y)
+	ebiten.SetWindowPosition(g.X, g.Y)
+
+}
+
+func bottomWalk(g *Game) {
+	maxX, maxY := ebiten.ScreenSizeInFullscreen()
+	log.Printf("%d, %d", maxX, maxY)
+	x, y := ebiten.WindowPosition()
+	g.X = x
+	g.Y = y
+	g.Y = maxY - 200
+	g.X = g.X + random(-100, 100)
+	log.Printf("%d, %d", g.X, g.Y)
+	ebiten.SetWindowPosition(g.X, g.Y)
 }
 
 func (g *Game) Update(screen *ebiten.Image) error {
@@ -25,12 +58,15 @@ func (g *Game) Update(screen *ebiten.Image) error {
 	g.Clock = g.Clock + 1
 
 	if g.Clock%60 == 0 {
-		x, y := ebiten.WindowPosition()
-		g.X = x
-		g.Y = y
-		g.X = g.X + random(-100, 100)
-		g.Y = g.Y + random(-100, 100)
-		ebiten.SetWindowPosition(g.X, g.Y)
+
+		if g.WalkMode == Random {
+			walkRandom(g)
+		}
+
+		if g.WalkMode == Bottom {
+			bottomWalk(g)
+		}
+
 	}
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyW) {

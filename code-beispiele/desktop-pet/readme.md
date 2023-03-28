@@ -19,3 +19,7 @@ go run . assets/pet-2 0.8
 ```
 
 
+### TODOs: 
+
+1) Pet should not leave the screen area 
+2) Different 'walk' modi. ex: pet just walks on the screen bottom. 

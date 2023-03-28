@@ -39,10 +39,11 @@ func main() {
 	ebiten.SetWindowFloating(true)
 
 	game := &Game{
-		Pet:   pet,
-		X:     500,
-		Y:     500,
-		Clock: 0,
+		Pet:      pet,
+		X:        500,
+		Y:        500,
+		Clock:    0,
+		WalkMode: Bottom,
 	}
 	ebiten.SetScreenTransparent(true)
 	if err := ebiten.RunGame(game); err != nil {
