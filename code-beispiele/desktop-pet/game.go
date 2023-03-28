@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"math/rand"
 	"time"
 
@@ -36,20 +35,17 @@ func walkRandom(g *Game) {
 	g.Y = y
 	g.X = g.X + random(-100, 100)
 	g.Y = g.Y + random(-100, 100)
-	log.Printf("%d, %d", g.X, g.Y)
 	ebiten.SetWindowPosition(g.X, g.Y)
 
 }
 
 func bottomWalk(g *Game) {
-	maxX, maxY := ebiten.ScreenSizeInFullscreen()
-	log.Printf("%d, %d", maxX, maxY)
+	_, maxY := ebiten.ScreenSizeInFullscreen()
 	x, y := ebiten.WindowPosition()
 	g.X = x
 	g.Y = y
 	g.Y = maxY - 200
 	g.X = g.X + random(-100, 100)
-	log.Printf("%d, %d", g.X, g.Y)
 	ebiten.SetWindowPosition(g.X, g.Y)
 }
 
