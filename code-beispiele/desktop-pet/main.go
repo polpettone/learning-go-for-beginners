@@ -17,6 +17,7 @@ func main() {
 
 	petImagesPath := "assets/pet-1"
 	scale := 0.3
+	walkMode := Bottom
 	if len(os.Args) > 1 {
 		petImagesPath = os.Args[1]
 	}
@@ -27,6 +28,12 @@ func main() {
 			log.Fatal(err)
 		}
 		scale = scaleFromArg
+	}
+
+	if len(os.Args) > 3 {
+		if os.Args[3] == "RANDOM" {
+			walkMode = Random
+		}
 	}
 
 	pet := NewPet(50, 50, scale, petImagesPath)
@@ -43,7 +50,7 @@ func main() {
 		X:        500,
 		Y:        500,
 		Clock:    0,
-		WalkMode: Bottom,
+		WalkMode: walkMode,
 	}
 	ebiten.SetScreenTransparent(true)
 	if err := ebiten.RunGame(game); err != nil {
